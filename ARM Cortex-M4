@@ -1,0 +1,57 @@
+Here’s an example implementation in C:
+
+```c
+
+#include <stdint.h>
+
+#include “stm32f4xx.h” // Include the 
+
+appropriate CMSIS header for your 
+
+microcontroller
+
+// Function to enable interrupts globally
+
+Void enable_interrupts(void) {
+
+ __enable_irq();
+
+}
+
+// Function to initialize the NVIC
+// Configure the interrupt vector table
+
+Void NVIC_Configuration(void) {
+
+ // Set the interrupt vector table base address
+
+ SCB->VTOR = NVIC_VectTab_FLASH;
+
+ // Set the interrupt vector table offset if 
+
+necessary
+
+ // SCB->VTOR |= 0x20000;
+
+}
+
+Int main(void) {
+
+ // Initialize the NVIC
+
+ NVIC_Configuration();
+
+ NVIC_Init();
+// Enable interrupts
+
+ Enable_interrupts();
+
+ While (1) {
+
+ // Main program loop
+
+ }
+
+}
+
+```
